@@ -8,8 +8,11 @@
 #include "pallet_list.hpp"
 #include "truck.hpp"
 
+// Types
+typedef std::pair<Truck, PalletList> DataSet;
+
 // Parser Functions
-std::vector<std::string>     getAvailableDatasets();
-std::pair<Truck, PalletList> getDataset(std::string datasetId);
+std::vector<std::string> getAvailableDatasets();
+DataSet                  getDataset(std::string datasetId);
 
 #endif // PARSERS_HPP
