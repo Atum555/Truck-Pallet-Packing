@@ -89,7 +89,7 @@ vector<string> getAvailableDatasets() {
     return availableDatasets;
 }
 
-pair<Truck, PalletList> getDataset(string datasetId) {
+DataSet getDataset(string datasetId) {
     if (!checkDatasetExists(datasetId)) { throw invalid_argument("Dataset does not exist."); }
 
     string basePath   = "datasets/";
