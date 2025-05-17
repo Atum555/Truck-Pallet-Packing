@@ -13,7 +13,7 @@ Algorithms selectAlgorithm() {
         = { "Brute-Force",        "Greedy", "Dynamic Programming", "Backtracking", "Integer Linear Programming",
             "Genetic Programming" };
 
-
+    bool error = false;
     while (true) {
         clearScreen();
 
@@ -24,6 +24,12 @@ Algorithms selectAlgorithm() {
         for (size_t i = 0; i < algorithmNames.size(); ++i) cout << i + 1 << ". " << algorithmNames[i] << endl;
 
         cout << endl;
+
+        if (error) {
+            setScreenColor(Color::Red);
+            cout << "Invalid Input!" << endl;
+            setScreenColor(Color::Clear);
+        }
 
         setScreenColor(Color::Cyan);
         cout << "Algorithm to use: ";
@@ -39,6 +45,7 @@ Algorithms selectAlgorithm() {
         else if (input == "4") return Algorithms::Backtracking;
         else if (input == "5") return Algorithms::ILP;
         else if (input == "6") return Algorithms::Genetic;
+        error = true;
     }
 }
 
@@ -50,7 +57,7 @@ DataSet selectDataSet() {
         throw runtime_error("No datasets available.");
     }
 
-
+    bool error = false;
     while (true) {
         clearScreen();
 
@@ -60,6 +67,12 @@ DataSet selectDataSet() {
 
         for (string datasetId : datasets) cout << datasetId << " ";
         cout << endl << endl;
+
+        if (error) {
+            setScreenColor(Color::Red);
+            cout << "Invalid Input!" << endl;
+            setScreenColor(Color::Clear);
+        }
 
         setScreenColor(Color::Cyan);
         cout << "Dataset to load: ";
@@ -71,6 +84,7 @@ DataSet selectDataSet() {
 
         if (find(datasets.begin(), datasets.end(), selectedDataset) != datasets.end())
             return getDataset(selectedDataset);
+        else error = true;
     }
 }
 
