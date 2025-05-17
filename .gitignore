@@ -1,0 +1,16 @@
+# IDE config files
+.idea/
+.vscode/
+.clion/
+
+# CMake generated files
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+build.ninja
+rules.ninja
+TargetDirectories.txt
+CMakeConfigureLog.yaml
+CMakeScratch/
