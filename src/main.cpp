@@ -44,7 +44,7 @@ Algorithms selectAlgorithm() {
         else if (input == "3") return Algorithms::DynamicProgramming;
         else if (input == "4") return Algorithms::Backtracking;
         else if (input == "5") return Algorithms::ILP;
-        else if (input == "6") return Algorithms::Genetic;
+        else if (input == "6") return Algorithms::GeneticProgramming;
         error = true;
     }
 }
@@ -119,7 +119,7 @@ int main() {
         // Add ILP algorithm logic here
         break;
 
-    case Algorithms::Genetic:
+    case Algorithms::GeneticProgramming:
         cout << "Genetic Programming algorithm selected." << endl;
         // Add Genetic Programming algorithm logic here
         break;
