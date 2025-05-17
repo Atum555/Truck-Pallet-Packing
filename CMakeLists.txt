@@ -11,6 +11,11 @@ add_executable(da_project
     src/parsers/dataset_parser.cpp
 )
 
+include_directories(
+    ${CMAKE_SOURCE_DIR}/src/model
+    ${CMAKE_SOURCE_DIR}/src/parsers
+)
+
 # Copy datasets folder next to the built executable
 add_custom_target(copy_datasets ALL
     COMMAND ${CMAKE_COMMAND} -E remove_directory "$<TARGET_FILE_DIR:da_project>/datasets"
