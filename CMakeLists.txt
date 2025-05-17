@@ -11,7 +11,7 @@ add_executable(da_project
     src/parsers/dataset_parser.cpp
 )
 
-include_directories(
+target_include_directories(da_project PRIVATE
     ${CMAKE_SOURCE_DIR}/src/model
     ${CMAKE_SOURCE_DIR}/src/parsers
 )
