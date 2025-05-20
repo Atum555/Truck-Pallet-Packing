@@ -11,6 +11,7 @@ add_executable(da_project
     src/utils/utils.cpp
     src/parsers/dataset_parser.cpp
     src/algorithms/brute_force.cpp
+    src/algorithms/brute_force_backtracking.cpp
 )
 
 target_include_directories(da_project PRIVATE

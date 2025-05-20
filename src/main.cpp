@@ -6,6 +6,7 @@
 #include "parsers/parsers.hpp"
 #include "utils/utils.hpp"
 #include "algorithms/brute_force.h"
+#include "algorithms/brute_force_backtracking.h"
 
 using namespace std;
 
@@ -114,7 +115,8 @@ int main() {
 
     case Algorithms::Backtracking:
         cout << "Backtracking algorithm selected." << endl;
-        // Add Backtracking algorithm logic here
+        palletList = solveBruteForceBacktracking(dataSet);
+        cout << palletList << endl;
         break;
 
     case Algorithms::ILP:
