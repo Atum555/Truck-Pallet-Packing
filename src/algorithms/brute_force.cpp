@@ -1,13 +1,13 @@
-#include "brute_force.h"
 #include <cmath>
+#include "brute_force.h"
 using namespace std;
 
 #define BIT(n) (1 << n)
 
-PalletList solveBruteForce(const DataSet &DataSet) {
-    int            capacity   = DataSet.first.capacity();
-    int            palletsNum = DataSet.first.pallets();
-    vector<Pallet> pallets    = DataSet.second.getPallets();
+PalletList solveBruteForce(const DataSet &dataSet) {
+    int            capacity   = dataSet.first.capacity();
+    int            palletsNum = dataSet.first.pallets();
+    vector<Pallet> pallets    = dataSet.second.getPallets();
 
     int combinations = BIT(palletsNum);
     int value        = 0;
