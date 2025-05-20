@@ -10,6 +10,7 @@ add_executable(da_project
     src/main.cpp
     src/utils/utils.cpp
     src/parsers/dataset_parser.cpp
+    src/algorithms/brute_force.cpp
 )
 
 target_include_directories(da_project PRIVATE

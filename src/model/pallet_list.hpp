@@ -17,6 +17,8 @@ class PalletList {
     // Get the list of pallets
     const std::vector<Pallet> &getPallets() const { return _pallets; }
 
+    void clear() { _pallets.clear(); }
+
     friend std::ostream &operator<<(std::ostream &os, const PalletList &palletList) {
         os << "PalletList: [" << std::endl;
         for (size_t i = 0; i < palletList._pallets.size(); ++i) {
