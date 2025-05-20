@@ -3,6 +3,7 @@
 #include <string>
 #include <utility>
 
+#include "greedy.cpp"
 #include "parsers.hpp"
 #include "utils.hpp"
 
@@ -91,6 +92,7 @@ DataSet selectDataSet() {
 int main() {
     Algorithms algorithm = selectAlgorithm();
     DataSet    dataSet   = selectDataSet();
+    PalletList solution;
     clearScreen();
 
     switch (algorithm) {
@@ -101,6 +103,7 @@ int main() {
 
     case Algorithms::Greedy:
         cout << "Greedy algorithm selected." << endl;
+        solution = greedy(dataSet);
         // Add Greedy algorithm logic here
         break;
 
@@ -126,6 +129,6 @@ int main() {
 
     default: cout << "Unknown algorithm selected." << endl; break;
     }
-
+    cout << solution << endl;
     return 0;
 }
