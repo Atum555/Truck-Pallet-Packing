@@ -11,8 +11,8 @@ PalletList greedy(const DataSet &dataset) {
     PalletList     solution;
 
     sort(palletList.begin(), palletList.end(), [](const Pallet &a, const Pallet &b) {
-        int ratioA = a.profit() / a.weight();
-        int ratioB = b.profit() / b.weight();
+        double ratioA = static_cast<double>(a.profit()) / a.weight();
+        double ratioB = static_cast<double>(b.profit()) / b.weight();
 
         if (ratioA != ratioB) return ratioA > ratioB;
         if (a.weight() != b.weight()) return a.weight() > b.weight();
