@@ -3,10 +3,9 @@
 #include <string>
 #include <utility>
 
-#include "parsers/parsers.hpp"
-#include "utils/utils.hpp"
-#include "algorithms/brute_force.h"
-#include "algorithms/brute_force_backtracking.h"
+#include "algorithms.hpp"
+#include "parsers.hpp"
+#include "utils.hpp"
 
 using namespace std;
 
@@ -93,19 +92,18 @@ DataSet selectDataSet() {
 int main() {
     Algorithms algorithm = selectAlgorithm();
     DataSet    dataSet   = selectDataSet();
-    PalletList palletList;
+    PalletList solution;
     clearScreen();
 
     switch (algorithm) {
     case Algorithms::BruteForce:
         cout << "Brute-Force algorithm selected." << endl;
-        palletList = solveBruteForce(dataSet);
-        cout << palletList << endl;
+        solution = bruteForce(dataSet);
         break;
 
     case Algorithms::Greedy:
         cout << "Greedy algorithm selected." << endl;
-        // Add Greedy algorithm logic here
+        solution = greedy(dataSet);
         break;
 
     case Algorithms::DynamicProgramming:
@@ -131,6 +129,8 @@ int main() {
 
     default: cout << "Unknown algorithm selected." << endl; break;
     }
+
+    cout << solution << endl;
 
     return 0;
 }

@@ -13,8 +13,7 @@ using namespace std;
 
 bool checkDatasetExists(string datasetId) {
     vector<string> availableDatasets = getAvailableDatasets();
-    return find(availableDatasets.begin(), availableDatasets.end(), datasetId)
-           != availableDatasets.end();
+    return find(availableDatasets.begin(), availableDatasets.end(), datasetId) != availableDatasets.end();
 }
 
 Truck getTruckFromFile(ifstream &file) {
@@ -26,7 +25,7 @@ Truck getTruckFromFile(ifstream &file) {
     getline(file, line);
     istringstream iss(line);
 
-    int capacity, pallets;
+    uint64_t capacity, pallets;
 
     getline(iss, token, ',');
     capacity = stoi(token);
@@ -47,7 +46,7 @@ PalletList getPalletListFromFile(ifstream &file) {
         istringstream iss(line);
         string        token;
 
-        int id, weight, profit;
+        uint64_t id, weight, profit;
 
         // Parse the CSV line
         getline(iss, token, ',');
@@ -75,8 +74,7 @@ vector<string> getAvailableDatasets() {
         string filename = entry.path().filename().string();
 
         // Check if the file matches the pattern "Pallets_<id>.csv"
-        if (!(filename.find("Pallets_") == 0 && filename.find(".csv") == filename.size() - 4))
-            continue;
+        if (!(filename.find("Pallets_") == 0 && filename.find(".csv") == filename.size() - 4)) continue;
 
         string datasetId = filename.substr(8, filename.size() - 12); // Extract the id
 
@@ -99,8 +97,7 @@ DataSet getDataset(string datasetId) {
     ifstream truckFileStream(truckFile);
     ifstream palletFileStream(palletFile);
 
-    if (!truckFileStream.is_open() || !palletFileStream.is_open())
-        throw runtime_error("Failed to open dataset files.");
+    if (!truckFileStream.is_open() || !palletFileStream.is_open()) throw runtime_error("Failed to open dataset files.");
 
     Truck      truck      = getTruckFromFile(truckFileStream);
     PalletList palletList = getPalletListFromFile(palletFileStream);
