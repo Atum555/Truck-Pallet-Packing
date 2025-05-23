@@ -17,6 +17,7 @@ target_include_directories(da_project PRIVATE
     ${CMAKE_SOURCE_DIR}/src/model
     ${CMAKE_SOURCE_DIR}/src/utils
     ${CMAKE_SOURCE_DIR}/src/parsers
+    ${CMAKE_SOURCE_DIR}/src/algorithms
 )
 
 # Copy datasets folder next to the built executable

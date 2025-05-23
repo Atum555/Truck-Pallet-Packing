@@ -3,9 +3,9 @@
 #include <string>
 #include <utility>
 
-#include "parsers/parsers.hpp"
-#include "utils/utils.hpp"
-#include "algorithms/brute_force.h"
+#include "algorithms.hpp"
+#include "parsers.hpp"
+#include "utils.hpp"
 
 using namespace std;
 
@@ -92,14 +92,14 @@ DataSet selectDataSet() {
 int main() {
     Algorithms algorithm = selectAlgorithm();
     DataSet    dataSet   = selectDataSet();
-    PalletList palletList;
+    PalletList solution;
     clearScreen();
 
     switch (algorithm) {
     case Algorithms::BruteForce:
         cout << "Brute-Force algorithm selected." << endl;
-        palletList = solveBruteForce(dataSet);
-        cout << palletList << endl;
+        solution = bruteForce(dataSet);
+        cout << solution << endl;
         break;
 
     case Algorithms::Greedy:

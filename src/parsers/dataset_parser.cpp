@@ -26,7 +26,7 @@ Truck getTruckFromFile(ifstream &file) {
     getline(file, line);
     istringstream iss(line);
 
-    int capacity, pallets;
+    u_int64_t capacity, pallets;
 
     getline(iss, token, ',');
     capacity = stoi(token);
@@ -47,7 +47,7 @@ PalletList getPalletListFromFile(ifstream &file) {
         istringstream iss(line);
         string        token;
 
-        int id, weight, profit;
+        u_int64_t id, weight, profit;
 
         // Parse the CSV line
         getline(iss, token, ',');
