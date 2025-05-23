@@ -44,8 +44,10 @@ class PalletList {
             os << std::endl;
         }
         os << "]" << std::endl;
-        os << palletList._pallets.size() << " pallets, " << palletList.totalWeight() << " weight, "
-           << palletList.totalProfit() << " profit" << std::endl;
+        os << std::endl
+           << "Pallets: " << palletList._pallets.size() << std::endl
+           << "Weight: " << palletList.totalWeight() << std::endl
+           << "Profit: " << palletList.totalProfit() << std::endl;
         return os;
     }
 };

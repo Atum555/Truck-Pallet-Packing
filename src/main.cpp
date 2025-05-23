@@ -99,7 +99,6 @@ int main() {
     case Algorithms::BruteForce:
         cout << "Brute-Force algorithm selected." << endl;
         solution = bruteForce(dataSet);
-        cout << solution << endl;
         break;
 
     case Algorithms::Greedy:
@@ -129,6 +128,8 @@ int main() {
 
     default: cout << "Unknown algorithm selected." << endl; break;
     }
+
+    cout << endl << solution << endl;
 
     return 0;
 }
