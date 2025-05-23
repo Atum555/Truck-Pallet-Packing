@@ -8,24 +8,24 @@ using namespace std;
 
 PalletList bruteForce(const DataSet &dataSet) {
     vector<Pallet> pallets    = dataSet.second.getPallets();
-    u_int64_t      capacity   = dataSet.first.capacity();
-    u_int64_t      palletsNum = pallets.size();
+    uint64_t       capacity   = dataSet.first.capacity();
+    uint64_t       palletsNum = pallets.size();
 
     // Sanity check
     if (palletsNum >= 64) return PalletList();
 
-    u_int64_t combinations = BIT(palletsNum);
-    u_int64_t value        = 0;
-    u_int64_t weight       = 0;
+    uint64_t combinations = BIT(palletsNum);
+    uint64_t value        = 0;
+    uint64_t weight       = 0;
 
     vector<Pallet> solution;
-    u_int64_t      bestValue = 0;
+    uint64_t       bestValue = 0;
 
-    for (u_int64_t mask = 0; mask < combinations; mask++) {
+    for (uint64_t mask = 0; mask < combinations; mask++) {
         value  = 0;
         weight = 0;
 
-        for (u_int64_t i = 0; i < palletsNum; i++)
+        for (uint64_t i = 0; i < palletsNum; i++)
             if (mask & BIT(i)) {
                 value  += pallets[i].profit();
                 weight += pallets[i].weight();
@@ -36,7 +36,7 @@ PalletList bruteForce(const DataSet &dataSet) {
             bestValue = value;
             solution.clear();
 
-            for (u_int64_t j = 0; j < palletsNum; j++)
+            for (uint64_t j = 0; j < palletsNum; j++)
                 if (mask & BIT(j)) solution.push_back(pallets[j]);
         }
     }

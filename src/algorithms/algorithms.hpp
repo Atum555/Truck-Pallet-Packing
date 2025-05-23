@@ -3,7 +3,7 @@
 
 #include "parsers.hpp"
 
-#define BIT(n) (1 << n)
+#define BIT(n) (1ULL << n)
 
 PalletList bruteForce(const DataSet &dataSet);
 

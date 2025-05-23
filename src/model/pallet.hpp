@@ -6,18 +6,18 @@
 
 class Pallet {
   private:
-    u_int64_t _id;
-    u_int64_t _weight;
-    u_int64_t _profit;
+    uint64_t _id;
+    uint64_t _weight;
+    uint64_t _profit;
 
   public:
-    Pallet(u_int64_t id, u_int64_t weight, u_int64_t profit) : _id(id), _weight(weight), _profit(profit) {}
+    Pallet(uint64_t id, uint64_t weight, uint64_t profit) : _id(id), _weight(weight), _profit(profit) {}
 
-    u_int64_t id() const { return this->_id; }
+    uint64_t id() const { return this->_id; }
 
-    u_int64_t weight() const { return this->_weight; }
+    uint64_t weight() const { return this->_weight; }
 
-    u_int64_t profit() const { return this->_profit; }
+    uint64_t profit() const { return this->_profit; }
 
     friend std::ostream &operator<<(std::ostream &os, const Pallet &pallet) {
         os << "Pallet(ID: " << pallet._id << ", Weight: " << pallet._weight << ", Profit: " << pallet._profit << ")";
