@@ -103,7 +103,7 @@ int main() {
 
     case Algorithms::Greedy:
         cout << "Greedy algorithm selected." << endl;
-        // Add Greedy algorithm logic here
+        solution = greedy(dataSet);
         break;
 
     case Algorithms::DynamicProgramming:
@@ -129,7 +129,7 @@ int main() {
     default: cout << "Unknown algorithm selected." << endl; break;
     }
 
-    cout << endl << solution << endl;
+    cout << solution << endl;
 
     return 0;
 }
