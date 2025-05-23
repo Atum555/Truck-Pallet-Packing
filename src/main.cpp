@@ -3,7 +3,7 @@
 #include <string>
 #include <utility>
 
-#include "greedy.cpp"
+#include "algorithms.hpp"
 #include "parsers.hpp"
 #include "utils.hpp"
 
@@ -98,7 +98,7 @@ int main() {
     switch (algorithm) {
     case Algorithms::BruteForce:
         cout << "Brute-Force algorithm selected." << endl;
-        // Add Brute-Force algorithm logic here
+        solution = bruteForce(dataSet);
         break;
 
     case Algorithms::Greedy:
@@ -129,6 +129,8 @@ int main() {
 
     default: cout << "Unknown algorithm selected." << endl; break;
     }
+
     cout << solution << endl;
+
     return 0;
 }

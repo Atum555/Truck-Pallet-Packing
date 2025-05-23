@@ -10,12 +10,15 @@ add_executable(da_project
     src/main.cpp
     src/utils/utils.cpp
     src/parsers/dataset_parser.cpp
+    src/algorithms/brute_force.cpp
+    src/algorithms/greedy.cpp
 )
 
 target_include_directories(da_project PRIVATE
     ${CMAKE_SOURCE_DIR}/src/model
     ${CMAKE_SOURCE_DIR}/src/utils
     ${CMAKE_SOURCE_DIR}/src/parsers
+    ${CMAKE_SOURCE_DIR}/src/algorithms
 )
 
 # Copy datasets folder next to the built executable
