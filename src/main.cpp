@@ -3,6 +3,7 @@
 #include <string>
 #include <utility>
 
+#include "algorithms.hpp"
 #include "parsers.hpp"
 #include "utils.hpp"
 
@@ -91,12 +92,13 @@ DataSet selectDataSet() {
 int main() {
     Algorithms algorithm = selectAlgorithm();
     DataSet    dataSet   = selectDataSet();
+    PalletList solution;
     clearScreen();
 
     switch (algorithm) {
     case Algorithms::BruteForce:
         cout << "Brute-Force algorithm selected." << endl;
-        // Add Brute-Force algorithm logic here
+        solution = bruteForce(dataSet);
         break;
 
     case Algorithms::Greedy:
@@ -126,6 +128,8 @@ int main() {
 
     default: cout << "Unknown algorithm selected." << endl; break;
     }
+
+    cout << endl << solution << endl;
 
     return 0;
 }
