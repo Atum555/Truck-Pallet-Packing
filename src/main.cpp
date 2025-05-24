@@ -118,12 +118,11 @@ int main() {
 
     case Algorithms::ILP:
         cout << "Integer Linear Programming algorithm selected." << endl;
-        // Add ILP algorithm logic here
         break;
 
     case Algorithms::GeneticProgramming:
         cout << "Genetic Programming algorithm selected." << endl;
-        // Add Genetic Programming algorithm logic here
+        solution = genetic(dataSet);
         break;
 
     default: cout << "Unknown algorithm selected." << endl; break;

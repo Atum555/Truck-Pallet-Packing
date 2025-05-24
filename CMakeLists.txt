@@ -12,6 +12,7 @@ add_executable(da_project
     src/parsers/dataset_parser.cpp
     src/algorithms/brute_force.cpp
     src/algorithms/greedy.cpp
+    src/algorithms/genetic.cpp
 )
 
 target_include_directories(da_project PRIVATE

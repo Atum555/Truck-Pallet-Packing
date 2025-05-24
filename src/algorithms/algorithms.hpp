@@ -10,4 +10,6 @@ PalletList bruteForce(const DataSet &dataSet);
 
 PalletList greedy(const DataSet &dataset);
 
+PalletList genetic(const DataSet &dataset);
+
 #endif // ALGORITHMS_HPP
