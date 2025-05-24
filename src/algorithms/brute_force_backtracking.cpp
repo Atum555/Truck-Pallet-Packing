@@ -5,7 +5,7 @@ using namespace std;
 // At each step, it decides whether to include or exclude the current pallet.
 // Updates bestProfit and bestSelection if a better solution is found.
 void backtrack(
-    const vector<Pallet> &pallets, int capacity, size_t idx, int currentWeight, int currentProfit,
+    const vector<Pallet> &pallets, uint64_t capacity, size_t idx, int currentWeight, int currentProfit,
     vector<int> &currentSelection, int &bestProfit, vector<int> &bestSelection
 ) {
     if (idx == pallets.size()) {

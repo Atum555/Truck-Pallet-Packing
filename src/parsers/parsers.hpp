@@ -14,5 +14,6 @@ typedef std::pair<Truck, PalletList> DataSet;
 // Parser Functions
 std::vector<std::string> getAvailableDatasets();
 DataSet                  getDataset(std::string datasetId);
+bool                     checkDatasetExists(std::string datasetId);
 
 #endif // PARSERS_HPP
