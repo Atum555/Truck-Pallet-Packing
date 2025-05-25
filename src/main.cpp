@@ -14,13 +14,10 @@
 
 using namespace std;
 
-// Add a global variable for verbose mode
 bool verboseMode = false;
 
-// Move algorithmNames to global scope
 vector<string> algorithmNames
-    = { "Brute-Force",        "Greedy", "Dynamic Programming", "Backtracking", "Integer Linear Programming",
-        "Genetic Programming" };
+    = { "Brute-Force", "Greedy", "Dynamic Programming", "Backtracking", "Genetic Programming" };
 
 Algorithms selectAlgorithm() {
     bool error = false;
@@ -53,7 +50,6 @@ Algorithms selectAlgorithm() {
         else if (input == "2") return Algorithms::Greedy;
         else if (input == "3") return Algorithms::DynamicProgramming;
         else if (input == "4") return Algorithms::Backtracking;
-        else if (input == "5") return Algorithms::ILP;
         else if (input == "6") return Algorithms::GeneticProgramming;
         error = true;
     }
@@ -136,8 +132,8 @@ int main(int argc, char *argv[]) {
 
         vector<Algorithms> algorithmsToTest;
         if (mode == "all") {
-            algorithmsToTest = { Algorithms::BruteForce,   Algorithms::Greedy, Algorithms::DynamicProgramming,
-                                 Algorithms::Backtracking, Algorithms::ILP,    Algorithms::GeneticProgramming };
+            algorithmsToTest = { Algorithms::BruteForce, Algorithms::Greedy, Algorithms::DynamicProgramming,
+                                 Algorithms::Backtracking, Algorithms::GeneticProgramming };
         } else {
             int algorithmNumber = stoi(mode);
             if (algorithmNumber < 1 || algorithmNumber > 6) {
@@ -152,8 +148,7 @@ int main(int argc, char *argv[]) {
             remove_if(
                 algorithmsToTest.begin(), algorithmsToTest.end(),
                 [](Algorithms algo) {
-                    return algo == Algorithms::DynamicProgramming || algo == Algorithms::ILP
-                           || algo == Algorithms::GeneticProgramming;
+                    return algo == Algorithms::DynamicProgramming || algo == Algorithms::GeneticProgramming;
                 }
             ),
             algorithmsToTest.end()
@@ -243,15 +238,9 @@ int main(int argc, char *argv[]) {
         break;
 
     case Algorithms::Backtracking:
+        solution = solveBruteForceBacktracking(dataSet);
         clearScreen();
         cout << "Backtracking algorithm selected." << endl;
-        solution = solveBruteForceBacktracking(dataSet);
-        break;
-
-    case Algorithms::ILP:
-        clearScreen();
-        cout << "Integer Linear Programming algorithm selected." << endl;
-        // Add ILP algorithm logic here
         break;
 
     case Algorithms::GeneticProgramming:
