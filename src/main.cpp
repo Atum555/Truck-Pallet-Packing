@@ -9,7 +9,6 @@
 #include <vector>
 
 #include "algorithms.hpp"
-#include "brute_force_backtracking.h"
 #include "parsers.hpp"
 #include "utils.hpp"
 

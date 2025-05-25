@@ -1,4 +1,5 @@
-#include "brute_force_backtracking.h"
+#include "algorithms.hpp"
+
 using namespace std;
 
 // Recursive backtracking function to explore all combinations of pallets.
