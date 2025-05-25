@@ -10,14 +10,14 @@
 
 class Population {
   public:
-    vector<Individual> individuals;
-    mt19937            rng; // random number generator
+    std::vector<Individual> individuals;
+    std::mt19937            rng; // random number generator
 
     Population(int size, size_t numPallets, unsigned int seed) : rng(seed) {
         individuals.reserve(size);
         for (int i = 0; i < size; ++i) {
             Individual individual(numPallets);
-            individuals.push_back(move(individual));
+            individuals.push_back(std::move(individual));
         }
     }
 
