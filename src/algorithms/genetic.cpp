@@ -19,7 +19,7 @@ PalletList genetic(const DataSet &dataset) {
     int    numPallets     = palletList.size();
     int    populationSize = 1000;
     double crossoverRate  = 0.75;
-    double mutationRate   = 0.001;
+    double mutationRate   = max(0.001, min(0.1, 1.0 / numPallets));
 
     // Initial selection proportions
     double elite_p      = 0.05;
@@ -32,7 +32,7 @@ PalletList genetic(const DataSet &dataset) {
     Population population(populationSize, numPallets, randomSeed);
 
     int    noImprovementCount   = 0;
-    int    improvementThreshold = min(numPallets * 10, 200);
+    int    improvementThreshold = (numPallets <= 50) ? 1000 : (numPallets <= 1000 ? 500 : 200);
     double bestFitness          = -numeric_limits<double>::infinity();
 
     for (int currentGeneration = 0; noImprovementCount < improvementThreshold; ++currentGeneration) {
