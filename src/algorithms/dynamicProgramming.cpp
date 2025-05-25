@@ -3,7 +3,7 @@
 #include <utility>
 #include <vector>
 
-#include "dynamicProgramming.h"
+#include "algorithms.hpp"
 #include "pallet_list.hpp"
 #include "parsers.hpp"
 #include "truck.hpp"
@@ -26,7 +26,7 @@ struct solution {
     }
 };
 
-PalletList dynamicProgramming(const DataSet dataset) {
+PalletList dynamicProgramming(const DataSet &dataset) {
     Truck          truck        = dataset.first;
     vector<Pallet> palletVector = dataset.second.getPallets();
     PalletList     optimalSolution;
