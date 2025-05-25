@@ -2,9 +2,6 @@
 
 using namespace std;
 
-// Recursive backtracking function to explore all combinations of pallets.
-// At each step, it decides whether to include or exclude the current pallet.
-// Updates bestProfit and bestSelection if a better solution is found.
 void backtrack(
     const vector<Pallet> &pallets, uint64_t capacity, size_t idx, int currentWeight, int currentProfit,
     vector<int> &currentSelection, int &bestProfit, vector<int> &bestSelection
@@ -41,7 +38,7 @@ PalletList solveBruteForceBacktracking(const DataSet &dataset) {
     backtrack(pallets, capacity, 0, 0, 0, currentSelection, bestProfit, bestSelection);
 
     PalletList result;
-    for (int idx : bestSelection) { result.addPallet(pallets[idx]); }
+    for (int idx : bestSelection) result.addPallet(pallets[idx]);
 
     return result;
 }
