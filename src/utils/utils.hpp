@@ -6,7 +6,7 @@
 #include <string>
 
 // Types
-enum Algorithms { BruteForce, Greedy, DynamicProgramming, Backtracking, ILP, GeneticProgramming };
+enum Algorithms { BruteForce, Greedy, DynamicProgramming, Backtracking, GeneticProgramming };
 
 enum Color { Clear, Red, Cyan, Green, Grey, Yellow };
 

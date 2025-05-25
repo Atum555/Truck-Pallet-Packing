@@ -11,6 +11,7 @@ add_executable(da_project
     src/utils/utils.cpp
     src/parsers/dataset_parser.cpp
     src/algorithms/brute_force.cpp
+    src/algorithms/brute_force_backtracking.cpp
     src/algorithms/greedy.cpp
     src/algorithms/dynamicProgramming.cpp
     src/algorithms/genetic.cpp
