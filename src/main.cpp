@@ -97,32 +97,40 @@ int main() {
 
     switch (algorithm) {
     case Algorithms::BruteForce:
-        cout << "Brute-Force algorithm selected." << endl;
         solution = bruteForce(dataSet);
+        clearScreen();
+        cout << "Brute-Force algorithm selected." << endl;
         break;
 
     case Algorithms::Greedy:
-        cout << "Greedy algorithm selected." << endl;
         solution = greedy(dataSet);
+        clearScreen();
+
+        cout << "Greedy algorithm selected." << endl;
         break;
 
     case Algorithms::DynamicProgramming:
+        clearScreen();
         cout << "Dynamic Programming algorithm selected." << endl;
         // Add Dynamic Programming algorithm logic here
         break;
 
     case Algorithms::Backtracking:
+        clearScreen();
         cout << "Backtracking algorithm selected." << endl;
         // Add Backtracking algorithm logic here
         break;
 
     case Algorithms::ILP:
+        clearScreen();
         cout << "Integer Linear Programming algorithm selected." << endl;
+        // Add ILP algorithm logic here
         break;
 
     case Algorithms::GeneticProgramming:
-        cout << "Genetic Programming algorithm selected." << endl;
         solution = genetic(dataSet);
+        clearScreen();
+        cout << "Genetic Programming algorithm selected." << endl;
         break;
 
     default: cout << "Unknown algorithm selected." << endl; break;
