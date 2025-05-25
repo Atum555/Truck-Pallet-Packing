@@ -149,9 +149,6 @@ PalletList genetic(const DataSet &dataset) {
         outputFile.close();
     } else cerr << "Unable to open file for writing." << endl;
 
-
-    population.updateFitness(dataset);
-    population.sortByFitness();
     Individual bestIndividual = population.individuals[0];
 
     vector<Pallet> selectedPalletsVector;
