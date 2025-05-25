@@ -12,8 +12,8 @@ PalletList greedy(const DataSet &dataset);
 
 PalletList dynamicProgramming(const DataSet &dataset);
 
-PalletList solveBruteForceBacktracking(const DataSet &dataSet);
+PalletList bruteForceBacktracking(const DataSet &dataSet);
 
-PalletList genetic(const DataSet &dataset);
+PalletList genetic(const DataSet &dataset, bool print = true);
 
 #endif // ALGORITHMS_HPP

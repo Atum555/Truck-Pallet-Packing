@@ -94,7 +94,6 @@ DataSet selectDataSet() {
     }
 }
 
-// Function to write results to a CSV file
 void writeResultsToCSV(
     const std::string &filename, const std::vector<std::tuple<std::string, std::string, double, int>> &results
 ) {
@@ -106,57 +105,46 @@ void writeResultsToCSV(
 }
 
 int main(int argc, char *argv[]) {
-    cout << "Program started." << endl;
-
-    // Check for verbose flag
-    for (int i = 1; i < argc; ++i) {
-        if (string(argv[i]) == "-v") {
-            verboseMode = true;
-            break;
-        }
-    }
-
     if (argc > 1 && string(argv[1]) == "measure") {
-        cout << "Measure mode activated." << endl;
+        // Check for verbose flag
+        for (int i = 1; i < argc; ++i) {
+            if (string(argv[i]) == "-v") {
+                verboseMode = true;
+                break;
+            }
+        }
 
         if (argc < 5) {
             cerr << "Usage: ./da_project measure (all | algorithm-number) dataset-number (number of runs) [-v]" << endl;
             return 1;
         }
 
-        string      mode      = argv[2];
+        string      algorithm = argv[2];
         string      datasetId = argv[3];
         std::size_t runs      = std::stoull(argv[4]);
 
-        cout << "Mode: " << mode << ", Dataset: " << datasetId << ", Runs: " << runs << endl;
+        cout << "Algorithm: " << algorithm << ", Dataset: " << datasetId << ", Runs: " << runs << endl;
 
         vector<Algorithms> algorithmsToTest;
-        if (mode == "all") {
+        if (algorithm == "all") {
             algorithmsToTest = { Algorithms::BruteForce, Algorithms::Greedy, Algorithms::DynamicProgramming,
                                  Algorithms::Backtracking, Algorithms::GeneticProgramming };
         } else {
-            int algorithmNumber = stoi(mode);
-            if (algorithmNumber < 1 || algorithmNumber > 6) {
+            int algorithmNumber;
+
+            try {
+                algorithmNumber = stoi(algorithm);
+            } catch (const std::exception &e) {
+                cerr << "Usage: ./da_project measure (all | algorithm-number) dataset-number (number of runs) [-v]"
+                     << endl;
+                return 1;
+            }
+
+            if (algorithmNumber < 1 || algorithmNumber > 5) {
                 cerr << "Invalid algorithm number. Must be between 1 and 6." << endl;
                 return 1;
             }
             algorithmsToTest = { static_cast<Algorithms>(algorithmNumber - 1) };
-        }
-
-        // Filter out unimplemented algorithms
-        algorithmsToTest.erase(
-            remove_if(
-                algorithmsToTest.begin(), algorithmsToTest.end(),
-                [](Algorithms algo) {
-                    return algo == Algorithms::DynamicProgramming || algo == Algorithms::GeneticProgramming;
-                }
-            ),
-            algorithmsToTest.end()
-        );
-
-        if (algorithmsToTest.empty()) {
-            cerr << "No valid algorithms to test." << endl;
-            return 1;
         }
 
         if (!checkDatasetExists(datasetId)) {
@@ -173,30 +161,29 @@ int main(int argc, char *argv[]) {
         for (const auto &algorithm : algorithmsToTest) {
             cout << "Testing algorithm: " << algorithmNames[static_cast<int>(algorithm)] << endl;
             for (std::size_t i = 0; i < runs; ++i) {
-                if (verboseMode) { cout << "Run " << i + 1 << " on dataset: " << datasetId << endl; }
+                if (verboseMode) cout << "Run " << i + 1 << " on dataset: " << datasetId;
 
                 // Measure execution time and collect results
                 auto       start = chrono::high_resolution_clock::now();
                 PalletList solution;
 
                 switch (algorithm) {
-                case Algorithms::BruteForce  : solution = bruteForce(dataSet); break;
-                case Algorithms::Greedy      : solution = greedy(dataSet); break;
-                case Algorithms::Backtracking: solution = solveBruteForceBacktracking(dataSet); break;
-                default                      : cerr << "Algorithm not implemented." << endl; continue;
+                case Algorithms::BruteForce        : solution = bruteForce(dataSet); break;
+                case Algorithms::Greedy            : solution = greedy(dataSet); break;
+                case Algorithms::DynamicProgramming: solution = dynamicProgramming(dataSet); break;
+                case Algorithms::Backtracking      : solution = bruteForceBacktracking(dataSet); break;
+                case Algorithms::GeneticProgramming: solution = genetic(dataSet, false); break;
                 }
 
                 auto   end           = chrono::high_resolution_clock::now();
                 double executionTime = chrono::duration<double, milli>(end - start).count();
 
-                if (verboseMode) { cout << "Execution Time: " << executionTime << " ms" << endl; }
+                if (verboseMode) cout << " Execution Time: " << executionTime << " ms" << endl;
 
                 // Update algorithm stats
                 algorithmStats[algorithmNames[static_cast<int>(algorithm)]].first += executionTime;
                 algorithmStats[algorithmNames[static_cast<int>(algorithm)]].second++;
             }
-
-            cout << endl;
         }
 
         // Display a summary of average results
@@ -206,7 +193,6 @@ int main(int argc, char *argv[]) {
             cout << "Algorithm: " << algorithm << ", Average Execution Time: " << averageTime << " ms" << endl;
         }
 
-        // Exit after measure mode
         return 0;
     }
 
@@ -238,7 +224,7 @@ int main(int argc, char *argv[]) {
         break;
 
     case Algorithms::Backtracking:
-        solution = solveBruteForceBacktracking(dataSet);
+        solution = bruteForceBacktracking(dataSet);
         clearScreen();
         cout << "Backtracking algorithm selected." << endl;
         break;

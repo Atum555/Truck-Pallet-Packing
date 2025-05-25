@@ -28,7 +28,7 @@ void backtrack(
     }
 }
 
-PalletList solveBruteForceBacktracking(const DataSet &dataset) {
+PalletList bruteForceBacktracking(const DataSet &dataset) {
     int            capacity = dataset.first.capacity();
     vector<Pallet> pallets  = dataset.second.getPallets();
 

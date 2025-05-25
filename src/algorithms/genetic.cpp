@@ -12,7 +12,7 @@
 
 using namespace std;
 
-PalletList genetic(const DataSet &dataset) {
+PalletList genetic(const DataSet &dataset, bool print) {
     vector<Pallet> palletList = dataset.second.getPallets();
     Truck          truck      = dataset.first;
 
@@ -41,9 +41,11 @@ PalletList genetic(const DataSet &dataset) {
         population.sortByFitness();
 
         //* Print Status
-        clearScreen();
-        cout << "Generation: " << currentGeneration << endl;
-        population.individuals[0].status(cout, dataset);
+        if (print) {
+            clearScreen();
+            cout << "Generation: " << currentGeneration << endl;
+            population.individuals[0].status(cout, dataset);
+        }
 
         // Check for improvement in best fitness
         if (population.individuals[0].fitness > bestFitness) {
