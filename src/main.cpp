@@ -110,6 +110,7 @@ int main() {
         break;
 
     case Algorithms::DynamicProgramming:
+        solution = dynamicProgramming(dataSet);
         clearScreen();
         cout << "Dynamic Programming algorithm selected." << endl;
         // Add Dynamic Programming algorithm logic here
