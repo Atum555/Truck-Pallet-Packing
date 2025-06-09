@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['updatefitness_0',['updateFitness',['../classPopulation.html#abb200c490fcf54049f6c4b1084f86334',1,'Population']]],
-  ['utils_2ecpp_1',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2ehpp_2',['utils.hpp',['../utils_8hpp.html',1,'']]]
-];
